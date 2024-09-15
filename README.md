@@ -5,13 +5,10 @@
 <br>"Обробка списків з використанням базових функцій"</br>
 з дисципліни "Вступ до функціонального програмування"
 </p>
-
-<div style="display: flex; justify-content: flex-end;">
-  <div style="border: 0px; padding: 10px;">
+<div align="right">
     <p>Студент: Терентьєв Іван Дмитрович</p>
     <p>Група: КВ-11</p>
     <p>Рік: 2024</p>
-  </div>
 </div>
 
 
