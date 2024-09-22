@@ -28,6 +28,7 @@
 
 
 ```lisp
+;; 1
 (defvar my-list nil)
 (setq my-list
     (cons 'x
@@ -35,48 +36,87 @@
                 (cons 'y
                       (cons (list 'a 'b)
                             (list 'z (list 42 43) nil))))))
-(format t "~%1. Printing my-list")
-(print my-list)
-(format t "~%2. Printing head of my-list")
-(print (car my-list))
-(format t "~%3. Printing tail of my-list")
-(print (cdr my-list))
-(format t "~%4. Printing third element of my-list")
-(print (nth 2 my-list))
-(format t "~%5. Printing last element of my-list")
-(print (car (last my-list)))
-(format t "~%6.1.1 Printing check ATOMarity of first element of my-list => 'X' ")
-(print (atom (car my-list)))
-(format t "~%6.1.2 Printing check ATOMarity of fourth element of my-list => '(A B)' ")
-(print (atom (nth 3 my-list)))
-(format t "~%6.1.3 Printing check ATOMarity of last element of my-list 'NIL' ")
-(print (atom (car (last my-list))))
-(format t "~%6.2.1 Printing check LISTParity of first element of my-list => 'X' ")
-(print (listp (car my-list)))
-(format t "~%6.2.2 Printing check LISTParity of fourth element of my-list => '(A B)' ")
-(print (listp (nth 3 my-list)))
-(format t "~%6.2.3 Printing check LISTParity of last element of my-list 'NIL' ")
-(print (listp (car (last my-list))))
-(format t "~%7.1.1 Printing check EQLarity of first element of my-list => 'X' and 'x' ")
-(print (eql (car my-list) 'x))
-(format t "~%7.1.2 Printing check EQLarity of second element of my-list => '7' and 7.0 ")
-(print (eql (second my-list) 7.0))
-(format t "~%7.1.3 Printing check EQLarity of fourth element of my-list => '(A B)' and (A B) ")
-(print (eql (nth 3 my-list) '('a 'b)))
-(format t "~%7.2.1 Printing check NULLarity of first element of my-list => 'X' ")
-(print (eql (car my-list) 'x))
-(format t "~%7.2.2 Printing check NULLarity of fourth element of my-list => '(A B)' ")
-(print (eql (nth 3 my-list) 7.0))
-(format t "~%7.2.3 Printing check NULLarity of last element of my-list 'NIL' ")
-(print (eql (car (last my-list)) '('a 'b)))
-(format t "~%7.3.1 Printing check EQUALParity of first element of my-list => 'X' and x ")
-(print (equalp (car my-list) 'x))
-(format t "~%7.3.2 Printing check EQUALParity of second element of my-list => '7' and 7.0 ")
-(print (equalp (second my-list) 7.0))
-(format t "~%7.3.3 Printing check EQLUALParity of fourth element of my-list => '(A B)' and (A B) ")
-(print (equalp (nth 3 my-list) (list 'a 'b)))
-(format t "~%8. Printing appended my-list with fourth element of my list => '(A B)' ")
-(print (append my-list (nth 3 my-list)))
+;; (X 7 Y (A B) Z (42 43) NIL)
+
+;; 2
+(car my-list)
+;; X 
+
+;; 3
+(cdr my-list)
+;; (7 Y (A B) Z (42 43) NIL)
+
+;; 4
+(nth 2 my-list)
+;; Y
+
+;; 5
+(car (last my-list))
+;; NIL
+
+;; 6.1.1
+(atom (car my-list))
+;; T
+
+;; 6.1.2 
+(atom (nth 3 my-list))
+;; NIL
+
+;; 6.1.3
+(atom (car (last my-list)))
+;; T
+
+;; 6.2.1
+(listp (car my-list))
+;; NIL
+
+;; 6.2.2
+(listp (nth 3 my-list))
+;; T
+
+;; 6.2.3
+(listp (car (last my-list)))
+;; T
+
+;; 7.1.1
+(eql (car my-list) 'x)
+;; T
+
+;; 7.1.2
+(eql (second my-list) 7.0)
+;; NIL
+
+;; 7.1.3
+(eql (nth 3 my-list) '('a 'b))
+;; NIL
+
+;; 7.2.1
+(eql (car my-list) 'x)
+;; T
+
+;; 7.2.2
+(eql (nth 3 my-list) 7.0)
+;; NIL
+
+;; 7.2.3
+(eql (car (last my-list)) '('a 'b))
+;; NIL
+
+;; 7.3.1
+(equalp (car my-list) 'x)
+;; T
+
+;; 7.3.2
+(equalp (second my-list) 7.0)
+;; T
+
+;; 7.3.3
+(equalp (nth 3 my-list) (list 'a 'b))
+;; T
+
+;; 8
+(append my-list (nth 3 my-list))
+;; (X 7 Y (A B) Z (42 43) NIL A B) 
 ```
 ## Завдання за варіантом №6
 Створіть список, що відповідає структурі списку, наведеній на рисунку (за варіантом). Для цього допускається використання не більше двох форм. Номер варіанту обирається як номер у списку групи, який надсилає викладач на початку семестру (на випадок, якщо протягом семестру стануться зміни в складі групи), за модулем 8: 1 -> 1, 2 - > 2, ..., 9 -> 1, 10 -> 2, ... 
@@ -86,13 +126,12 @@
 </p>
 
 ```lisp
-(format t "~%9. Resolving task, variant number 22 => 22mod8 => 6")
 (defvar list-six nil)
 (defvar include-in-six nil)
 (setq include-in-six '(6 5 4)
-  list-six (cons (car (last include-in-six))
+  list-six (cons (last include-in-six)
                  (cons 'd (list 'e include-in-six))))
-(print list-six)
+;; ((4) D E (6 5 4)) 
 ```
 
 ## Результат виконання програми
@@ -140,5 +179,5 @@ T
 8. Printing appended my-list with fourth element of my list => '(A B)' 
 (X 7 Y (A B) Z (42 43) NIL A B) 
 9. Resolving task, variant number 22 => 22mod8 => 6
-(4 D E (6 5 4)) 
+((4) D E (6 5 4)) 
 ```

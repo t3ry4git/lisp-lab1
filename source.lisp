@@ -5,6 +5,7 @@
                 (cons 'y
                       (cons (list 'a 'b)
                             (list 'z (list 42 43) nil))))))
+
 (format t "~%1. Printing my-list")
 (print my-list)
 (format t "~%2. Printing head of my-list")
@@ -51,6 +52,6 @@
 (defvar list-six nil)
 (defvar include-in-six nil)
 (setq include-in-six '(6 5 4)
-  list-six (cons (car (last include-in-six))
+  list-six (cons (last include-in-six)
                  (cons 'd (list 'e include-in-six))))
 (print list-six)
