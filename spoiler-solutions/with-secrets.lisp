@@ -77,7 +77,7 @@
 (format t "~%SECRET V5")
 (defvar list-five nil)
 (defvar include-in-five nil)
-(setq include-in-five '(4 e f) list-five (list 'd include-in-five (list (list 5) (car (last include-in-five)))))
+(setq include-in-five '(4 e f) list-five (list 'd include-in-five  (list 5) (car (last include-in-five))))
 (print list-five)
 (format t "~%SECRET V7")
 (defvar list-seven nil)
